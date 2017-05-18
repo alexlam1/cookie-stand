@@ -7,6 +7,15 @@ body {
   text-align: center;
 }
 
+thead {
+  background: #888;
+}
+
+td {
+  padding: 20px;
+  border: solid 1px black;
+}
+
 h1, h2 {
   color: salmon;
   text-align: center;
