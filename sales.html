@@ -1,6 +1,7 @@
 <html>
 <table>
-  <thead>
+
+  <thead id="header">
     <td>Store</td>
     <td>6:00 AM</td>
     <td>7:00 AM</td>
@@ -23,7 +24,46 @@
 
 <head><link rel="stylesheet" type="text/css" href="style.css"></head>
 
-<body></body>
+<body>  <form id="sample_form">
+
+     <fieldset>
+       <label for="first">Store:</label>
+       <input type="text" name="first" placeholder="enter a store location" required>
+     </fieldset>
+
+     <fieldset>
+       <label for="last">Item:</label>
+       <input type="text" name="last" placeholder="enter an item" required>
+     </fieldset>
+
+     <fieldset>
+       <label for="enrolled">Currently enrolled in classes?</label>
+       <input type="checkbox" name="enrolled" value="enrolled">
+     </fieldset>
+
+     <fieldset>
+       <label for="future_client">Are we YUMMY YUMMY?</label>
+       <input type="radio" name="future_client" value="yes">Oi
+       <input type="radio" name="future_client" value="no">Nawh
+     </fieldset>
+
+     <button id="submit-btn" type="submit">FIND NOW!</button>
+   </form>
+
+   <section id="students">
+     <table>
+       <thead>
+         <td>First Name</td>
+         <td>Last Name</td>
+         <td>Enrolled</td>
+         <td>Interested in future classes?</td>
+       </thead>
+       <tbody id="student_table">
+         <!-- student table data goes here -->
+       </tbody>
+     </table>
+   </section>
+   <script src="app.js"></script></body>
 <script src="app.js"></script>
 </tbody>
 
