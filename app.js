@@ -1,10 +1,10 @@
 'use strict';
+//
+// var form = document.getElementById('sample_form');
+// var table = document.getElementById('student_table');
 
-var form = document.getElementById('sample_form');
-var table = document.getElementById('student_table');
-
-var data = [];
-
+//var data = [];
+var total = 0;
 
 
 function Store(storeName, minCust, maxCust, avgCookieSale){
@@ -15,30 +15,35 @@ function Store(storeName, minCust, maxCust, avgCookieSale){
   this.hourly = [];
 }
 
-function formData(event) {
-  event.preventDefault();
+// function formData(event) {
+//   event.preventDefault();
+//
+//   var storeName = event.target.storeName.value;
+//   var minCust = event.target.minCust.value;
+//   var maxCust = event.target.maxCust.checked;
+//   var avgCookieSale = event.target.avgCookieSale.value;
+//
+// //  createTable();
+//   form.reset();
+// }
 
-  var first = event.target.first.value;
-  var last = event.target.last.value;
-  var enrolled = event.target.enrolled.checked;
-  var future_classes = event.target.future_classes.value;
+function storeHeader() {
+  var hourArray = ['Store name', '6:00 AM', '7:00 AM', '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 AM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM'];
+  var headerData = [];
+  var new_row = document.createElement('tr');
+  var table = document.getElementById('tableHeader');
 
-  data.push(new Student(first, last, enrolled, future_classes));
-  createTable();
-  form.reset();
+  for (var i = 0; i < hourArray.length; i++) {
+    headerData.push('<td>' + hourArray[i] + '</td>');
+  }
+  headerData.push('<td>' + total + '</td>');
+  var headerRow = headerData.join('');
+  console.log (new_row);
+  new_row.innerHTML = headerRow;
+  table.appendChild(new_row);
 }
-//  var hourArray = [6:00 AM, 7:00 AM, 8:00 AM, 9:00 AM, 10:00 AM, 11:00 AM, 12:00 AM, 1:00 PM, 2:00 PM, 3:00 PM, 4:00 PM, 5:00 PM, 6:00 PM, 7:00 PM, 8:00 PM]
-//
-// function = storeHeader(hourArray) {
-//
-//   var new_row = document.createElement('tr');
-//   new_row.innerHTML = data.join('');
-//   storeHeader.appendChild(hourArray);
 
-
-//  data.push('<td>' + total + '</td>');
-
-//}
+storeHeader();
 
 Store.prototype.cookiePerHour = function () {
   var people = Math.floor(Math.random() * (this.maxCust - this.minCust)) + this.minCust;

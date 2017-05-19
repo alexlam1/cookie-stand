@@ -49,7 +49,7 @@ div {
 }
 
 p {
-  font-size: 2em;
+  font-size: 3em;
   margin: 50px;
   border: 2%;
   background: pink;
@@ -68,6 +68,8 @@ nav{
   text-align: center;
   background: salmon;
 }
+
+  /*I used this template for the bubbles I typed it myself but I liked it because it was easy to read and understand the code https://codepen.io/jonitrythall/pen/bivaG -->*/
 
 .bubbles {
   position: absolute;
