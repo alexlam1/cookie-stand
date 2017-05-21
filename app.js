@@ -1,7 +1,4 @@
 'use strict';
-
-//var form = document.getElementById('sample_form');
-//var data = [];
 var hourArray = ['Store Name', '6:00 AM', '7:00 AM', '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 AM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', 'total'];
 
 function Store(storeName, minCust, maxCust, avgCookieSale){
@@ -23,7 +20,6 @@ Store.prototype.hourlySales = function() {
     var cookiehour = Math.floor(this.cookiePerHour());
     this.hourly.push(cookiehour);
     this.total = this.total + cookiehour;
-    console.log('thishour:',this.total);
   }
 };
 
@@ -53,7 +49,6 @@ for (var i = 0; i < hourArray.length; i++) {
 Store.prototype.render = function() {
   var table = document.getElementById('shell');
   var data = ['<td>' + this.storeName + '</td>'];
-  //
 
   for (var j = 0; j < this.hourly.length; j++) {
     data.push('<td>' + this.hourly[j] + '</td>');
@@ -65,20 +60,31 @@ Store.prototype.render = function() {
   table.appendChild(new_row);
 };
 
-// function formData(event) {
-//   event.preventDefault();
-//
-//   var first = event.target.first.value;
-//   var last = event.target.last.value;
-//   var enrolled = event.target.enrolled.checked;
-//   var future_classes = event.target.future_classes.value;
-//
-//   data.push(new Student(first, last, enrolled, future_classes));
-//   createTable();
-//   form.reset();
-// // }
+var form = document.getElementById('sample_form');
+var data = [];
 
+function formData(event) {
+  event.preventDefault();
+  var first = event.target.first.value;
+  var last = event.target.last.value;
+  var enrolled = event.target.enrolled.checked;
+  var future_classes = event.target.future_classes.value;
+  data.push(new Store(minCust, maxCust, total));
+  createTable();
+  form.reset();
+}
 
+function createTable() {
+  var row;
+  for (var i = 0; i < data.length; i++) {
+    row = document.createElement('tr');
+    row.innerHTML = '<td>' + data[i].Store + '</td>' +
+    '<td>' + data[i].Item + '</td>' +
+    '<td>' + data[i].enrolled + '</td>' +
+    '<td>' + data[i].future_classes + '</td>';
+    form.addEventListener('submit', formData);
+    table.appendChild(row);
+  }
 
 firstAndPike.hourlySales();
 seaTacAirport.hourlySales();
