@@ -1,6 +1,6 @@
 'use strict';
 var hourArray = ['Store Name', '6:00 AM', '7:00 AM', '8:00 AM', '9:00 AM', '10:00 AM', '11:00 AM', '12:00 AM', '1:00 PM', '2:00 PM', '3:00 PM', '4:00 PM', '5:00 PM', '6:00 PM', '7:00 PM', '8:00 PM', 'total'];
-
+var table = document.getElementById('table');
 function Store(storeName, minCust, maxCust, avgCookieSale){
   this.storeName = storeName;
   this.minCust = minCust;
@@ -29,15 +29,6 @@ var seattleCenter = new Store('Seattle Center', 11, 38, 3.7);
 var capitolHill = new Store('Capitol Hill', 20, 38, 2.3);
 var Alki = new Store('Alki', 2, 16, 4.6);
 
-// function storeHeader() {
-//   var headerOne = document.getElementById('header')
-//   for (var i = 0; i < hourArray.length; i++) {
-//     var hoursData = ['<td>' + hourArray[i] + '</td>' ];
-//     headerOne.appendChild(hoursData);
-//   }
-// }
-
-// storeHeader();
 var tr = document.createElement('tr');
 document.getElementById('shell').appendChild(tr);
 for (var i = 0; i < hourArray.length; i++) {
@@ -60,19 +51,7 @@ Store.prototype.render = function() {
   table.appendChild(new_row);
 };
 
-var form = document.getElementById('sample_form');
 var data = [];
-
-function formData(event) {
-  event.preventDefault();
-  var first = event.target.first.value;
-  var last = event.target.last.value;
-  var enrolled = event.target.enrolled.checked;
-  var future_classes = event.target.future_classes.value;
-  data.push(new Store(minCust, maxCust, total));
-  createTable();
-  form.reset();
-}
 
 function createTable() {
   var row;
@@ -82,9 +61,10 @@ function createTable() {
     '<td>' + data[i].Item + '</td>' +
     '<td>' + data[i].enrolled + '</td>' +
     '<td>' + data[i].future_classes + '</td>';
-    form.addEventListener('submit', formData);
     table.appendChild(row);
   }
+}
+createTable();
 
 firstAndPike.hourlySales();
 seaTacAirport.hourlySales();
